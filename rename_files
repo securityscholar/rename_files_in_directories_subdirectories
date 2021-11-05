@@ -1,0 +1,12 @@
+from pathlib import Path
+
+files = Path(r'C:/enter_filepath_here/').rglob('*.txt') #This searches all directories and subdirectories for text files (you can change the .txt to any format like .html)
+# remove 'r' string from the above if you're on macos.
+
+for file in files:
+    parent_1 = file.parent.name
+    parent_2 = file.parent.parent.name
+    parent_3 = file.parent.parent.parent.name
+    parent_4 = file.parent.parent.parent.parent.name #you can add in the next line depending on your filestructure using the prior examples as a format. 
+    file.rename(Path(file.parent,f"{parent_1}_{parent_2}_{parent_3}_{parent_4}{file.suffix}")) 
+    print(f"{file.name} --> {parent_1}_{parent_2}_{parent_3}{parent_4}_{file.suffix}")
